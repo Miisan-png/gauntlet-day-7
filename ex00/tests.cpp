@@ -8,3 +8,12 @@ TEST_CASE("adding an item raises the count") {
 
     CHECK(inv.count() == 1);
 }
+
+TEST_CASE("has() finds an added item and rejects a missing one") {
+    Inventory inv;
+
+    inv.add("potion");
+
+    CHECK(inv.has("potion"));
+    CHECK_FALSE(inv.has("elixir"));
+}
