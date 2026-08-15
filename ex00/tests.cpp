@@ -27,3 +27,13 @@ TEST_CASE("removing an item drops the count and has() stops finding it") {
     CHECK(inv.count() == 0);
     CHECK_FALSE(inv.has("potion"));
 }
+
+TEST_CASE("removing a missing item is a no-op") {
+    Inventory inv;
+
+    inv.add("potion");
+    inv.remove("elixir");
+
+    CHECK(inv.count() == 1);
+    CHECK(inv.has("potion"));
+}
